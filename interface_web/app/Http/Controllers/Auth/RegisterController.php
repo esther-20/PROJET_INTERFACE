@@ -51,16 +51,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'firstname' => ['required', 'string', 'max:255'],
+            // 'firstname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'number', 'max:255'],
+            'telephone' => ['required', 'numeric'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Cretion d'un nouvel user
      *
      * @param  array  $data
      * @return \App\User
@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'adresse' => $data['adresse'],
             'telephone' => $data['telephone'],
             'password' => Hash::make($data['password']),
-            'admin' => $data['admin'],
+            // 'admin' => $data['admin'],
         ]);
     }
 }

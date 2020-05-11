@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
+  <title>Titre de lappli</title>
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
@@ -25,71 +25,98 @@
 
 <body class="bg-theme bg-theme1">
 
-<!-- start loader -->
-   <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
-   <!-- end loader -->
+<!-- Start Preloader -->
+   <div id="pageloader-overlay" class="visible incoming">
+		<div class="loader-wrapper-outer">
+		<div class="loader-wrapper-inner">
+		<div class="loader"></div></div></div>
+	</div>
+<!-- end Preloader -->
 
 <!-- Start wrapper-->
- <div id="wrapper">
+ 	<div id="wrapper">
+	<div class="loader-wrapper">
+ 		<div class="lds-ring">
+		<div class="card card-authentication1 mx-auto my-5">
+			<div class="card-body">
+		 	<div class="card-content p-2">
+		 		<div class="text-center">
+		 			<img src="assets/images/logo-icon.png" alt="logo icon">
+		 		</div>
+		  	<div class="card-title text-uppercase text-center py-3">Se Connecter</div>
 
- <div class="loader-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-	<div class="card card-authentication1 mx-auto my-5">
-		<div class="card-body">
-		 <div class="card-content p-2">
-		 	<div class="text-center">
-		 		<img src="assets/images/logo-icon.png" alt="logo icon">
-		 	</div>
-		  <div class="card-title text-uppercase text-center py-3">Sign In</div>
-		    <form>
-			  <div class="form-group">
-			  <label for="exampleInputUsername" class="sr-only">Username</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="Enter Username">
-				  <div class="form-control-position">
-					  <i class="icon-user"></i>
-				  </div>
-			   </div>
-			  </div>
-			  <div class="form-group">
-			  <label for="exampleInputPassword" class="sr-only">Password</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password">
-				  <div class="form-control-position">
-					  <i class="icon-lock"></i>
-				  </div>
-			   </div>
-			  </div>
-			<div class="form-row">
-			 <div class="form-group col-6">
-			   <div class="icheck-material-white">
-                <input type="checkbox" id="user-checkbox" checked="" />
-                <label for="user-checkbox">Remember me</label>
-			  </div>
-			 </div>
-			 <div class="form-group col-6 text-right">
-			  <a href="reset-password.html">Reset Password</a>
-			 </div>
-			</div>
-			 <button type="button" class="btn btn-light btn-block">Sign In</button>
-			  <div class="text-center mt-3">Sign In With</div>
-			  
-			 <div class="form-row mt-4">
-			  <div class="form-group mb-0 col-6">
-			   <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i> Facebook</button>
-			 </div>
-			 <div class="form-group mb-0 col-6 text-right">
-			  <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i> Twitter</button>
-			 </div>
-			</div>
-			 
-			 </form>
+		{{--  begin form  --}}
+			<form method="POST" action="{{ route('login') }}">
+            					@csrf
+			{{--  start E-mail  --}}
+			  	<div class="form-group">
+					<label for="exampleInputUsername" class="sr-only">E-mail</label>
+					<div class="position-relative has-icon-right">
+						<input type="email" id="exampleInputUsername" class="form-control input-shadow @error('email') is-invalid @enderror" name="email" required autocomplete="email" autofocus value="{{ old('email') }}" placeholder="E-mail">
+						@error('email')
+                     <span class="invalid-feedback" role="alert">
+                     	<strong>{{ $message }}</strong>
+                     </span>
+                  @enderror
+						<div class="form-control-position">
+							<i class="icon-user"></i>
+						</div>
+					</div>
+			  	</div>
+			{{--  end E-mail  --}}
+			
+			{{--  Begin Password  --}}
+			  	<div class="form-group">
+			  		<label for="exampleInputPassword" class="sr-only">Mot de Passe</label>
+			   	<div class="position-relative has-icon-right">
+				  		<input type="password" id="exampleInputPassword" class="form-control input-shadow  @error('password') is-invalid @enderror" name="password" required placeholder="Mot de Passe">
+						@error('password')
+                     <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                     </span>
+                  @enderror
+						<div class="form-control-position">
+						<i class="icon-lock"></i>
+						</div>
+					</div>
+				</div>
+			{{--  End Password  --}}
+
+			{{--  Begin Remember --}}
+				<div class="form-row text-center">
+					<div class="form-group col-12">
+						<div class="icheck-material-white">
+							<input type="checkbox" id="user-checkbox" checked="" name="remember" id="remember" {{ old('remember') ? 'checked' : ''}} />
+							<label for="user-checkbox">Se souvenir de moi</label>
+						</div>
+					</div>
+				</div>
+			{{--  end Remember --}}
+
+			  	<button type="submit" class="btn btn-light btn-block">Se connecter</button>
+					@if (Route::has('password.request'))
+						<a class="btn btn-link" href="{{ route('password.request') }}">
+								{{ __('Mot de Passe Oublié ?') }}
+						</a>
+					@endif
+			</form>
+		{{--  end Form --}}
+		
 		   </div>
 		  </div>
-		  <div class="card-footer text-center py-3">
-		    <p class="text-warning mb-0">Do not have an account? <a href="register.html"> Sign Up here</a></p>
-		  </div>
 	     </div>
-    
+
+
+
+
+
+
+
+
+
+
+	
+	 
      <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
