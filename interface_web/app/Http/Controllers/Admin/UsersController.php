@@ -8,15 +8,21 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    // Pour rendre toutes les fonction ici utilisables suelement par l'utilisateur authentifié
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Affiche la liste des utilisateurs
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
-        return('liste');
+        $users = User::all();
+        return view('admin.users.index',compact('users'));
     }
 
     /**
