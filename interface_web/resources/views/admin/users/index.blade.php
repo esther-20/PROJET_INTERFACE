@@ -54,8 +54,8 @@
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <a href="" class="btn btn-danger">Supprimer</a>
-                                <a href="" class="btn btn-primary">Modiffier</a>
+                                <a href="{{ Route('admin.users.destroy', $user->id) }}" class="btn btn-danger">Supprimer</a>
+                                <a href="{{ Route('admin.users.edit', $user->id) }}" class="btn btn-primary">Modiffier</a>
                             </td>
                         </tr>
                     @endforeach
