@@ -4,30 +4,6 @@
 @section('content')
 
 
-
-<!-- Start wrapper-->
- 	<div id="wrapper">
-
-		<!--  sidebar  -->
-
-            @include('layouts.sidebar')
-
-		<!--  sidebar  -->
-
-		<!--  topbar  -->
-
-			@include('layouts.topbar')
-
-		<!-- end topbar  -->
-
-
-<div class="clearfix"></div>
-
-	<div class="content-wrapper">
-		<div class="container-fluid">
-
-<!--Start Dashboard Content-->
-
     <!--Start Row-->
         <div class="row">
             <div class="col-12 col-lg-12">
@@ -38,10 +14,10 @@
                     <thead>
                         <tr>
                             <th>{{ _('#') }}</th>
-                            <th>Photo</th>
                             <th>Nom</th>
                             <th>Prénoms</th>
                             <th>E-mail</th>
+                            <th>Rôle</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -49,10 +25,11 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
-                            <td><img src="{{ asset('https://via.placeholder.com/110x110') }}" class="product-img" alt="product img"></td>
+                            <td><img src="{{ asset('https://via.placeholder.com/110x110') }}" class="product-img" alt="Photo utilisateur"></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
                             <td>
                                 <a href="{{ Route('admin.users.destroy', $user->id) }}" class="btn btn-danger">Supprimer</a>
                                 <a href="{{ Route('admin.users.edit', $user->id) }}" class="btn btn-primary">Modiffier</a>
@@ -71,18 +48,5 @@
         </div>
     <!--End Row-->
 
-<!--End Dashboard Content-->
-		
-
-
-
-	<!--start overlay-->
-		<div class="overlay toggle-menu"></div>
-	<!--end overlay-->
-		
-	</div><!-- End container-fluid-->
-		
-</div><!--End content-wrapper-->
-    
 
 @stop

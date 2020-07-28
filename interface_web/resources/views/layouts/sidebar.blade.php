@@ -1,5 +1,6 @@
 <!--Start sidebar-wrapper-->
     <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+    
         <div class="brand-logo">
             <a href="#">
                 <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
@@ -7,6 +8,7 @@
             </a>
         </div>
         <ul class="sidebar-menu do-nicescrol">
+            
             <li class="sidebar-header">Menu Principal</li>
             <li>
                 <a href="{{ Route('home') }}">
@@ -27,23 +29,7 @@
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class="zmdi zmdi-face"></i> <span>Profile</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" target="_blank">
-                    <i class="zmdi zmdi-lock"></i> <span>Login</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" target="_blank">
-                    <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-                </a>
-            </li>
         </ul>
+
     </div>
 <!--End sidebar-wrapper-->

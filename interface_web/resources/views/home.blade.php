@@ -4,31 +4,7 @@
 @section('content')
 	
 
-
-<!-- Start wrapper-->
- 	<div id="wrapper">
- 
- 
- 		<!--  sidebar  -->
-
-            @include('layouts.sidebar')
-
-		<!--  sidebar  -->
-		
-		
-		<!--  topbar  -->
-
-			@include('layouts/topbar')
-
-		<!-- end topbar  -->
-	
-
-<div class="clearfix"></div>
-	
-	<div class="content-wrapper">
-		<div class="container-fluid">
-
-	<!--Start Dashboard Content-->
+<!--Start Dashboard Content-->
 
 	<div class="card mt-3">
 		<div class="card-content">
@@ -178,16 +154,4 @@
 				 </div>
 		 </div>
 	</div><!--End Row-->
-	
-	<!--End Dashboard Content-->
-		
-	<!--start overlay-->
-			<div class="overlay toggle-menu"></div>
-		<!--end overlay-->
-		
-		</div>
-		<!-- End container-fluid-->
-		
-		</div><!--End content-wrapper-->
-	
 @stop
